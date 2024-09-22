@@ -1,8 +1,17 @@
 <x-header>
     <div class="col-md-6 mx-auto p-3 border border-success rounded mt-5">
         <h3>Sign Up</h3>
-        <form action="">
+        <form  action="{{ url('/signup') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @if(session('status'))
+            <div class="alert 
+            @if(str_contains(session('status'), 'success')){{ 'alert-success' }}
+            @else {{ 'alert-danger' }}
+            @endif
+            ">
+                {{ session('status'); }}
+            </div>
+        @endif
             <label for="" class="mt-3">Name</label>
             <input type="text" class="form-control" placeholder="Enter Your Name">
             
