@@ -23,7 +23,7 @@ class MemberController extends Controller
         $member->email = $request->email;
         $member->save();
 
-        return redirect('/signup')->with(["status" => "Registration successful <script></script>"]);
+        return redirect('/signup')->with(["status" => "Registration successful! You will be redicted in 3s"]);
         
         
 
