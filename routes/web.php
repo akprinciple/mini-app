@@ -14,7 +14,7 @@ Route::get('/', function () {
 });
 Route::view('/login', 'login');
 Route::post('/login', [loginController::class, 'check']);
-Route::view('/dashboard', 'dashboard')->middleware(MembersMiddleware::class);
+// Route::view('/dashboard', 'dashboard')->middleware(MembersMiddleware::class);
 
 Route::middleware(MembersMiddleware::class)->group(function () {
 })->prefix('consumer');
