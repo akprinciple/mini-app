@@ -49,12 +49,19 @@
                   {{-- <div class="input-group-icon pe-2"><i class="fas fa-search input-box-icon text-primary"></i>
                     <input class="form-control border-0 input-box bg-100" type="search" placeholder="Search Food" aria-label="Search" />
                   </div> --}}
+                  @if(Auth::check())
+                  <span class="me-3">{{ auth()->user()->name }}</span>
+                  <a href="{{ url('/logout') }}">
+                    <button class="btn btn-white bg-white text-danger me-2 " type="button"> <i class="fas fa-user me-2"></i>Logout</button>
+                  </a>
+                  @else
                   <a href="{{ url('/signup') }}">
                     <button class="btn btn-white bg-white text-primary me-2 " type="button"> <i class="fas fa-user me-2"></i>Get Started</button>
                   </a>
                   <a href="{{ url('/login') }}">
                     <button class="btn btn-white shadow-warning text-warning" type="button"> <i class="fas fa-user me-2"></i>Login</button>
                   </a>
+                  @endif
                 </form>
               </div>
             </div>
