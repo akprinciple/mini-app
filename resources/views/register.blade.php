@@ -32,9 +32,18 @@
             
         <label for="" class="mt-3">Email</label>
         <input type="email" class="form-control" placeholder="..@xmail.com" name="email"  value="{{ old('email') }}">
-
-        <label for="" class="mt-3">Password</label>
-        <input type="password" class="form-control" placeholder="********" name="password"  value="{{ old('password') }}">
+            <div class="justify-content-center mt-2">
+                <div class="d-inline-block">
+                    <label for="consumer" class=" me-2">Consumer</label>
+                    <input type="radio" name="level" id="consumer" value="consumer">
+                </div>
+                <div class="d-inline-block ml-3">
+                    <label for="farmer" class=" me-2">Farmer</label>
+                    <input type="radio" name="level" id="farmer" value="farmer">
+                </div>
+            </div>
+            <label for="" class="mt-3">Password</label>
+            <input type="password" class="form-control" placeholder="********" name="password"  value="{{ old('password') }}">
 
         <label for="" class="mt-3">Confirm Password</label>
         <input type="password" class="form-control" placeholder="Confirm your password" name="c_password">

@@ -16,12 +16,14 @@ class MemberController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:4',
+            'level' => 'required',
             'c_password' => 'required|same:password'
         ]);
         
         $member->name = $request->name;
         $member->password = bcrypt($request->password);
         $member->email = $request->email;
+        $member->level = $request->level;
         $member->save();
 
         return redirect('/signup')->with(["status" => "Registration successful! You will be redicted in 3s"]);
