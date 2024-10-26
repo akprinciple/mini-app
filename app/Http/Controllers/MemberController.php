@@ -4,22 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\member;
+use App\Models\Users;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
     public function store(Request $request) : RedirectResponse {
-        $member = new member;
+        $member = new Users;
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:members',
-            'password' => 'required|min:8',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4',
             'c_password' => 'required|same:password'
         ]);
         
         $member->name = $request->name;
-        $member->password = $request->password;
+        $member->password = bcrypt($request->password);
         $member->email = $request->email;
         $member->save();
 

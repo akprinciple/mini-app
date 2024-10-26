@@ -1,5 +1,8 @@
-<x-header>
-    <div class="col-md-6 mx-auto p-3 border border-success rounded mt-5">
+<x-layout>
+    <x-slot:title>Signup Page</x-slot:title>
+    <div class="pt-5 bg-primary">
+        <h3 class="text-center mt-5 text-white">Get Started with Leofoods !</h3>
+    <div class="col-md-6 mx-auto p-3 border border-warning shadow rounded mb-5 bg-white">
         <h3>Sign Up</h3>
         <form  action="{{ url('/signup') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -36,7 +39,8 @@
         <label for="" class="mt-3">Confirm Password</label>
         <input type="password" class="form-control" placeholder="Confirm your password" name="c_password">
         
-        <button type="submit" class="btn btn-success mt-3">Submit</button>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </form>
     </div>
-</x-header>
+    {{-- </div> --}}
+</x-layout>

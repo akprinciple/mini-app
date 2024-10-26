@@ -3,8 +3,10 @@
 namespace App\Http\Middleware;
 
 use App\Models\member;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class MembersMiddleware
@@ -16,15 +18,18 @@ class MembersMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!session('email')&& !session('password')) {
-            return redirect('/login');
+        if (!Auth::check()) {
+            return redirect('/login?1');
         }
-        $email = session('email');
-        $password = session('password');
-       $count =  member::where(['email'=>$email, 'password'=>$password])->count();
-        if ($count > 0) {
-            return redirect('/login')->with(["status" => "Please login!"]);
-        }
+    //     $id = auth()->id();
+    //     $email = auth()->user()->email;
+    //     $password = auth()->user()->password;
+    //     $email = session('email');
+    //     $password = session('password');
+    //    $count =  User::where(['email'=>$email, 'password'=>$password])->count();
+    //     if ($count < 1) {
+    //         return redirect('/login?2')->with(["error" => "Please login!"]);
+    //     }
         return $next($request);
     }
 }

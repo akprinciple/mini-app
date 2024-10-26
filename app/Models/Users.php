@@ -10,7 +10,7 @@ use function Laravel\Prompts\password;
 class Users extends Model
 {
     use HasFactory;
-    protected $table = 'members';
+    // protected $table = 'members';
 
     protected $fillable = ['name', 'email', 'password'];
 }
