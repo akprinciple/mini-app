@@ -21,6 +21,12 @@ class MembersMiddleware
         if (!Auth::check()) {
             return redirect('/login?1');
         }
+        $level = Auth::user()->level;
+
+        if ($level != 'consumer' && $level != 'admin') {
+            return redirect('/login?2');
+
+        }
     //     $id = auth()->id();
     //     $email = auth()->user()->email;
     //     $password = auth()->user()->password;

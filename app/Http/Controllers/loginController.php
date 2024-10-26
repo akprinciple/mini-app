@@ -17,8 +17,17 @@ class loginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
- 
-            return redirect()->intended('dashboard');
+            
+            // $mem = member::where('email','=', $request->email)
+            //     ->where('password','=', $request->password)
+            //     ->get();
+                $level = Auth::user()->level;
+                if ($level =='farmer') {
+                    
+                    return redirect()->intended('farmer/');
+                }
+                return redirect()->intended('consumer/dashboard');
+
         }
         
         return redirect('/login')->with(["status" => "Wrong email  and password combination"]);
