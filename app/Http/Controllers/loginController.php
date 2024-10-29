@@ -22,6 +22,10 @@ class loginController extends Controller
             //     ->where('password','=', $request->password)
             //     ->get();
                 $level = Auth::user()->level;
+                if ($level =='admin1') {
+                    
+                    return redirect()->intended('admin/');
+                }
                 if ($level =='farmer') {
                     
                     return redirect()->intended('farmer/');
