@@ -30,7 +30,7 @@ class loginController extends Controller
                     
                     return redirect()->intended('farmer/');
                 }
-                return redirect()->intended('consumer/dashboard');
+                return redirect()->intended('consumer/');
 
         }
         

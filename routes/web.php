@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\consumerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\logoutController;
 use App\Http\Controllers\MemberController;
@@ -24,17 +25,22 @@ Route::post('/login', [loginController::class, 'check']);
 
 // Route for Admin
 Route::group(['prefix'=> 'admin', 'middleware'=>AdminMiddleware::class], function () {
+    // Route::view('/', 'admin.dashboard');
+    
     Route::get('/', function(){
-        return "Welcome";
+        return view('admin.dashboard');
     });
+    Route::resource('consumers', consumerController::class);
 });
 
 // Group Route for Consumers
 Route::group(['prefix'=> 'consumer', 'middleware'=>MembersMiddleware::class], function () {
-    Route::view('/dashboard', 'dashboard');
+    Route::view('/', 'dashboard');
 });
 // Group Route for Farmers
 Route::group(['prefix'=> 'farmer', 'middleware'=>FarmerMiddleware::class], function () {
+    Route::view('/', 'dashboard');
+    
     Route::get('/', function(){
         return "Welcome";
     });
