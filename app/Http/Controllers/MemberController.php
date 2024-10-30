@@ -24,6 +24,7 @@ class MemberController extends Controller
         $member->password = bcrypt($request->password);
         $member->email = $request->email;
         $member->level = $request->level;
+        // $member->status = 'Unverified';
         $member->save();
 
         return redirect('/signup')->with(["status" => "Registration successful! You will be redicted in 3s"]);

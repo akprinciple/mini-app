@@ -58,7 +58,12 @@ class consumerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $status = $request->status;
+
+        $update = User::find($id);
+        $update->status = $status;
+        $update->save();
+        return redirect()->back()->with('success', 'Status updated successfully!');
     }
 
     /**
@@ -66,6 +71,9 @@ class consumerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $del = User::find($id);
+        $del->delete();
+        return redirect('admin/consumers')->with(['success', 'User successfully deleted!']);
+
     }
 }
