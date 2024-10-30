@@ -235,7 +235,13 @@
     </div>
         
 </div>
+<div class="main-panel" style="width: 100%">
+  <div class="content-wrapper">    <!-- partial -->
+<div class="main-panel">
+<div class="content-wrapper">
         {{ $slot; }}
+      </div>
+    </div>
         <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-white d-block text-center text-sm-left d-sm-inline-block">Copyright © fxvpsm.com 2024</span>

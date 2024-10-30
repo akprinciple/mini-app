@@ -12,7 +12,7 @@ class consumerController extends Controller
      */
     public function index()
     {
-        $allconsumers = User::where('level', 'consumer')->get();
+        $allconsumers = User::where('level', 'consumer')->get()->sortByDesc('id');
         return view('admin.allconsumers', ['consumers' => $allconsumers]);
     }
 
@@ -37,7 +37,12 @@ class consumerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::where('id', $id)->where('level', 'consumer')->first();
+        $count = User::where('id', $id)->where('level', 'consumer')->count();
+        if ($count < 1) {
+        return view('admin.singleConsumer', ['msg'=>"User not Found!"]);
+        }
+        return view('admin.singleConsumer', ['key'=>$user]);
     }
 
     /**
